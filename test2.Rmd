@@ -1,0 +1,50 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Data Analytics for Immersive Environments - Grace Reilly
+Student ID - D00262395
+
+Table of Contents
+
+**1.Abstract**
+
+**2.Introduction**
+
+ - Topic & Context
+
+ - Rationale & Hypothesis
+
+**3.Method**
+
+**4.Results**
+
+**5.Discussion**
+
+**6.References**
+
+**Abstract**
+
+The aim of this study was to determine which, if any is an effective treatment in PTSD patients. The study divided 150 patients (M= 75, F=75) into 3 groups using random sampling dependent on the type of treatment they would receive; Control (traditional CBT, no VR), Static (non-animated model content, VR), Animated (animated model content, VR). Treatment consisted of a 50 minute session weekly with their therapist over 12 weeks.
+PTSD measurements for all groups were measured using the observer-rated and self-report mechanisms. Measurements were taken at the start and end of the study. The main findings include patients OR and CPSS-SR were significantly decreased post treatment. Graph X shows that the OR and CPSS-SR measurements are very closely related. Furthermore X appears to be the most effective for the treatment of PTSD.  
+
+**Introduction**
+
+– Rationale & Hypothesis
+
+Post-traumatic stress disorder (PTSD) is observed in humans that have been exposed to a
+horrifying event, through direct experience or witness of such event. Symptoms might
+include vivid flashbacks, nightmares, intense distress and severe anxiety. The rationale
+behind this study is to understand what the most effective treatment is for PTSD in adults
+aged 18-25. The hypothesis states that X is the most effective treatment of PTSD.
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
