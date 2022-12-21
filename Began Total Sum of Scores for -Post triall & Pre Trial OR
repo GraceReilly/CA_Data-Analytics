@@ -1,0 +1,30 @@
+Pre_trial_or
+
+library(ggplot2)
+
+# Read data from Excel file
+df <- read_excel("C:/Users/iviic/OneDrive/Desktop/data.xlsx")
+
+# Create data frame with pre_trial_or and post_trial_or scores
+data <- data.frame(
+  group = c("Static", "Control", "Animated"),
+  score_type = c("pre_trial_or", "pre_trial_or", "pre_trial_or",
+                 "post_trial_or", "post_trial_or", "post_trial_or"),
+  value = c(sum(df$pre_trial_or[df$test_group == "Static"]),
+            sum(df$pre_trial_or[df$test_group == "Control"]),
+            sum(df$pre_trial_or[df$test_group == "Animated"]),
+            sum(df$post_trial_or[df$test_group == "Static"]),
+            sum(df$post_trial_or[df$test_group == "Control"]),
+            sum(df$post_trial_or[df$test_group == "Animated"]))
+)
+
+# Set group and score_type as factors
+data$group <- factor(data$group, levels = c("Static", "Control", "Animated"))
+data$score_type <- factor(data$score_type, levels = c("pre_trial_or", "post_trial_or"))
+
+# Create bar chart
+ggplot(data, aes(x = group, y = value, color = score_type)) +
+  geom_col(aes(fill = score_type), position = "dodge", width = 0.8, color = "#000000", linewidth = 1) +
+  labs(x = "Bar Chart Test Group", y = "Sum of Scores") +
+  scale_color_manual(values = c("#0000FF", "#FF00FF")) +
+  theme(text = element_text(color = "#000000"))
