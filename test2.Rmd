@@ -1,50 +1,126 @@
 ---
 title: "R Notebook"
 output: html_notebook
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-Data Analytics for Immersive Environments - Grace Reilly
-Student ID - D00262395
+# Data Analytics for Immersive Environments - Grace Reillylibrary
 
-Table of Contents
+#### Student No. D00262395
 
-**1.Abstract**
+## Table of Contents
 
-**2.Introduction**
+#### **1.Abstract**
 
- - Topic & Context
+#### **2.Introduction**
 
- - Rationale & Hypothesis
+-   Topic & Context
 
-**3.Method**
+-   Rationale & Hypothesis
 
-**4.Results**
+#### **3.Method**
 
-**5.Discussion**
+#### **4.Results**
 
-**6.References**
+#### **5.Discussion**
 
-**Abstract**
+#### **6.References**
 
-The aim of this study was to determine which, if any is an effective treatment in PTSD patients. The study divided 150 patients (M= 75, F=75) into 3 groups using random sampling dependent on the type of treatment they would receive; Control (traditional CBT, no VR), Static (non-animated model content, VR), Animated (animated model content, VR). Treatment consisted of a 50 minute session weekly with their therapist over 12 weeks.
-PTSD measurements for all groups were measured using the observer-rated and self-report mechanisms. Measurements were taken at the start and end of the study. The main findings include patients OR and CPSS-SR were significantly decreased post treatment. Graph X shows that the OR and CPSS-SR measurements are very closely related. Furthermore X appears to be the most effective for the treatment of PTSD.  
 
-**Introduction**
 
-– Rationale & Hypothesis
+#### ** 1.Abstract**
 
-Post-traumatic stress disorder (PTSD) is observed in humans that have been exposed to a
-horrifying event, through direct experience or witness of such event. Symptoms might
-include vivid flashbacks, nightmares, intense distress and severe anxiety. The rationale
-behind this study is to understand what the most effective treatment is for PTSD in adults
-aged 18-25. The hypothesis states that X is the most effective treatment of PTSD.
+The aim of this study was to determine which, if any is an effective
+treatment in PTSD patients. The study divided 150 patients (M= 75, F=75)
+into 3 groups using random sampling dependent on the type of treatment
+they would receive; Control (traditional CBT, no VR), Static
+(non-animated model content, VR), Animated (animated model content, VR).
+Treatment consisted of a 50 minute session weekly with their therapist
+over 12 weeks. PTSD measurements for all groups were measured using the
+observer-rated and self-report mechanisms. Measurements were taken at
+the start and end of the study. The main findings include patients OR
+and CPSS-SR were significantly decreased post treatment. Graph X shows
+that the OR and CPSS-SR measurements are very closely related.
+Furthermore X appears to be the most effective for the treatment of
+PTSD.
+
+#### ** 2.Introduction**
+
+##### - Rationale & Hypothesis
+
+Post-traumatic stress disorder (PTSD) is observed in humans that have
+been exposed to a horrifying event, through direct experience or witness
+of such event. Symptoms might include vivid flashbacks, nightmares,
+intense distress and severe anxiety. The rationale behind this study is
+to understand what the most effective treatment is for PTSD in adults
+aged 18-25. 
+The **null hypothesis** states no one group had a higher result.
+The **alternative hypothesis** states one or all groups had a higher result.
+
+### ** 3.Method**
+
+The method used to analysis the data to derive a conclusion regarding the 
+null hypothesis. I began by displaying the data in a bar chart to compare the
+values across the different subgroups within the PTSD data.
+
 
 ```{r}
-plot(cars)
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r}
+library(ggplot2)
+df <- read_excel("C:/Users/iviic/OneDrive/Desktop/data.xlsx")
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+data <- data.frame(
+    group = c("Static", "Control", "Animated"),
+    score_type = c("pre_trial_cpss", "pre_trial_cpss", "pre_trial_cpss",
+                   "pre_trial_or", "pre_trial_or", "pre_trial_or",
+                   "post_trial_cpss", "post_trial_cpss", "post_trial_cpss",
+                   "post_trial_or", "post_trial_or", "post_trial_or"),
+    value = c(sum(df$pre_trial_cpss[df$test_group == "Static"]),
+              sum(df$pre_trial_cpss[df$test_group == "Control"]),
+              sum(df$pre_trial_cpss[df$test_group == "Animated"]),
+              sum(df$pre_trial_or[df$test_group == "Static"]),
+              sum(df$pre_trial_or[df$test_group == "Control"]),
+              sum(df$pre_trial_or[df$test_group == "Animated"]),
+              sum(df$post_trial_cpss[df$test_group == "Static"]),
+              sum(df$post_trial_cpss[df$test_group == "Control"]),
+              sum(df$post_trial_cpss[df$test_group == "Animated"]),
+              sum(df$post_trial_or[df$test_group == "Static"]),
+              sum(df$post_trial_or[df$test_group == "Control"]),
+              sum(df$post_trial_or[df$test_group == "Animated"]))
+)
+
+data$group <- factor(data$group, levels = c("Static", "Control", "Animated"))
+data$score_type <- factor(data$score_type, levels = c("pre_trial_cpss", "post_trial_cpss", "pre_trial_or", "post_trial_or"))
+ggplot(data, aes(x = group, y = value, color = score_type)) +
+    geom_col(aes(fill = score_type), position = "dodge", width = 0.8, color = "#000000", linewidth = 1) +
+    labs(x = "Bar Chart Test Group", y = "Sum of Scores") +
+    scale_color_manual(values = c("#0000FF", "#FF00FF","#FFFF00","#30FF00")) +
+    theme(text = element_text(color = "#000000"))
+
+```
+#### **4.Results**
+
+#### **5.Discussion**
+
+#### **6.References**
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or
+by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output
+will be saved alongside it (click the *Preview* button or press
+*Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the
+editor. Consequently, unlike *Knit*, *Preview* does not run any R code
+chunks. Instead, the output of the chunk when it was last run in the
+editor is displayed.
+
+From this point
