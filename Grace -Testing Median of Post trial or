@@ -1,0 +1,13 @@
+write.xlsx(median_by_group, file = "C:/Users/iviic/OneDrive/Desktop/output_file.xlsx")
+
+library(dplyr)
+library(readxl)
+library(xlsx)
+
+# Read data from Excel file
+data <- read_excel("C:/Users/iviic/OneDrive/Desktop/data.xlsx")
+
+# Group data by test_group column and compute median for each group
+median_by_group <- data %>%
+    group_by(test_group) %>%
+    summarize(median = median(post_trial_or))
