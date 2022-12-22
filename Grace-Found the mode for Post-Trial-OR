@@ -1,0 +1,14 @@
+library(dplyr)
+> library(readxl)
+> library(xlsx)
+> 
+> # Read data from Excel file
+> data <- read_excel("C:/Users/iviic/OneDrive/Desktop/data.xlsx")
+> 
+> # Group data by test_group column and compute mode for each group
+> mode_by_group <- data %>%
++     group_by(test_group) %>%
++     summarize(mode = names(which.max(table(post_trial_or))))
+> 
+> # Write data frame to Excel file
+> write.xlsx(mode_by_group, file = "C:/Users/iviic/OneDrive/Desktop/output_file.xlsx")
